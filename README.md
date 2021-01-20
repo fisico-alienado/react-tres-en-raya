@@ -8,19 +8,19 @@ Here are the improvements listed in order of increasing difficulty:
 5. When someone wins, highlight the three squares that caused the win.
 6. When no one wins, display a message about the result being a draw.
 
-* Uso
-#+BEGIN_SRC sh
-git clone https://github.com/fisico-alienado/react-tres-en-raya.git
-cd react-tres-en-raya
-npm install
-npm start
-#+END_SRC
+# Uso
 
-* Follow-up tutorial
+  git clone https://github.com/fisico-alienado/react-tres-en-raya.git
+  cd react-tres-en-raya
+  npm install
+  npm start
+
+
+# Follow-up tutorial
 Start with the official final result here: [[https://codepen.io/gaearon/pen/gWWZgR?editors=0010][Starter Code]].
 O empieza en el commit 'Juego tres en raya con React creado con el tutorial oficial' - 8039979109acb8ba3d0e11681e8062549b905757
 
-** Display the location for each move
+## Display the location for each move
 We've used the =squares= array to store the board state of each step in class =Game=. We can count out the lastest moved square of each step by comparing the current squares element to the previous one. But we will avoid this by storing the index of the lastest moved square in each =history= element in the =handleClick= method: 
 
 #+BEGIN_SRC js
@@ -66,7 +66,7 @@ With the =lastestMoveSquare=, we can easily count out the location of each move 
 
 Now if you run ~npm start~ in the project folder and open [[http://localhost:3000]] in the browser, you should see the location for each move in each button of the move history list except the =Go to game start=.   
 
-** Bold the currently selected item
+## Bold the currently selected item
 Append this stype for bold item to your =src/index.css= file:
 
 #+BEGIN_SRC css
@@ -90,7 +90,7 @@ With a little change in the =render= method of =Game= class, we can achieve the 
         'Go to game start';
       return (
         <li key={move}>
-          {/* Bold the currently selected item */ }
+          {/# Bold the currently selected item #/ }
           <button
             className={move === stepNumber ? 'move-list-item-selected' : ''}
             onClick={() => this.jumpTo(move)}>{desc}
@@ -102,7 +102,7 @@ With a little change in the =render= method of =Game= class, we can achieve the 
   }
 #+END_SRC
 
-** Use two loops to make the squares
+## Use two loops to make the squares
 The original implementation of rendering the squares in class =Board= is hardcoded. We can do it better by using two loops:  
 
 #+BEGIN_SRC js
@@ -113,7 +113,7 @@ render() {
     for(let i=0; i<boardSize; ++i) {
       let row = [];
       for(let j=0; j<boardSize; ++j) {
-        row.push(this.renderSquare(i * boardSize + j));
+        row.push(this.renderSquare(i # boardSize + j));
       }
       squares.push(<div key={i} className="board-row">{row}</div>);
     }
@@ -126,7 +126,7 @@ render() {
 
 Each step in the first loop, we create a board row. And each step in the second loop, we add a square to the row. 
 
-** Add a toggle button for sorting
+## Add a toggle button for sorting
 So far, the moves list is displayed in ascending order by default, from game start to the latest step. We need to enable the moves list to be displayed in descending order, from lastest step to game start, and add a toggle button to switch the sorting order. 
 At first, add =isAscending= state representing which order should be displayed to the constructor: 
 
@@ -202,7 +202,7 @@ At last, the moves list should be displayed in the right order corresponding to 
   }
 #+END_SRC
 
-** Highlight the squares when someone wins
+## Highlight the squares when someone wins
 Append this stype for highlight square to the =src/index.css= file:
 
 #+BEGIN_SRC css
@@ -319,7 +319,7 @@ function Square(props) {
 }
 #+END_SRC
 
-** Display draw message
+## Display draw message
 If the board is full (no next move can be taken) and there is no winner, we can say that the result is a draw. To get whether the current move results in a draw, we need to revise the =calculateWinner= function: 
 
 #+BEGIN_SRC js
@@ -409,7 +409,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+##Note: this is a one-way operation. Once you `eject`, you can’t go back!##
 
 If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
