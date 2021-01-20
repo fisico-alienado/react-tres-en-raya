@@ -21,7 +21,7 @@ Start with the official final result here: [[https://codepen.io/gaearon/pen/gWWZ
 O empieza en el commit 'Juego tres en raya con React creado con el tutorial oficial' - 8039979109acb8ba3d0e11681e8062549b905757
 
 ## Display the location for each move
-We've used the =squares= array to store the board state of each step in class =Game=. We can count out the lastest moved square of each step by comparing the current squares element to the previous one. But we will avoid this by storing the index of the lastest moved square in each =history= element in the =handleClick= method: 
+We've used the `squares` array to store the board state of each step in class `Game`. We can count out the lastest moved square of each step by comparing the current squares element to the previous one. But we will avoid this by storing the index of the lastest moved square in each `history` element in the `handleClick` method: 
 
 #+BEGIN_SRC js
   handleClick(i) {
@@ -39,7 +39,7 @@ We've used the =squares= array to store the board state of each step in class =G
   }
 #+END_SRC
 
-With the =lastestMoveSquare=, we can easily count out the location of each move in the format (col, row) and append this format string to =desc=. Notice that we will use [[https://developer.mozilla.org/en-US/docs/Web][template string]] in the snippet, which is a feature from ES6:
+With the `lastestMoveSquare`, we can easily count out the location of each move in the format (col, row) and append this format string to `desc`. Notice that we will use [[https://developer.mozilla.org/en-US/docs/Web][template string]] in the snippet, which is a feature from ES6:
 
 #+BEGIN_SRC js
   render() {
@@ -64,10 +64,10 @@ With the =lastestMoveSquare=, we can easily count out the location of each move 
   }
 #+END_SRC
 
-Now if you run ~npm start~ in the project folder and open [[http://localhost:3000]] in the browser, you should see the location for each move in each button of the move history list except the =Go to game start=.   
+Now if you run ~npm start~ in the project folder and open [[http://localhost:3000]] in the browser, you should see the location for each move in each button of the move history list except the `Go to game start`.   
 
 ## Bold the currently selected item
-Append this stype for bold item to your =src/index.css= file:
+Append this stype for bold item to your `src/index.css` file:
 
 #+BEGIN_SRC css
 .move-list-item-selected{
@@ -76,7 +76,7 @@ Append this stype for bold item to your =src/index.css= file:
 }
 #+END_SRC
 
-With a little change in the =render= method of =Game= class, we can achieve the goal. We will apply the =move-list-item-selected= class if ~move === stepNumber~, which means the item is selected:
+With a little change in the `render` method of `Game` class, we can achieve the goal. We will apply the `move-list-item-selected` class if `move === stepNumber`, which means the item is selected:
 
 #+BEGIN_SRC js
   render() {
@@ -103,7 +103,7 @@ With a little change in the =render= method of =Game= class, we can achieve the 
 #+END_SRC
 
 ## Use two loops to make the squares
-The original implementation of rendering the squares in class =Board= is hardcoded. We can do it better by using two loops:  
+The original implementation of rendering the squares in class `Board` is hardcoded. We can do it better by using two loops:  
 
 #+BEGIN_SRC js
 render() {
@@ -128,7 +128,7 @@ Each step in the first loop, we create a board row. And each step in the second 
 
 ## Add a toggle button for sorting
 So far, the moves list is displayed in ascending order by default, from game start to the latest step. We need to enable the moves list to be displayed in descending order, from lastest step to game start, and add a toggle button to switch the sorting order. 
-At first, add =isAscending= state representing which order should be displayed to the constructor: 
+At first, add `isAscending` state representing which order should be displayed to the constructor: 
 
 #+BEGIN_SRC js
 class Game extends React.Component {
@@ -143,7 +143,7 @@ class Game extends React.Component {
 }
 #+END_SRC
 
-Add the toggle button to =render= method in =Game=. It will have different content according to the =isAscending= state: 
+Add the toggle button to `render` method in `Game`. It will have different content according to the `isAscending` state: 
 
 #+BEGIN_SRC js
   render() {
@@ -170,7 +170,7 @@ Add the toggle button to =render= method in =Game=. It will have different conte
   }
 #+END_SRC
 
-When the toggle button is clicked, =handleSortToggle= will be called. What this handler does is just flipping and saving the boolean state: 
+When the toggle button is clicked, `handleSortToggle` will be called. What this handler does is just flipping and saving the boolean state: 
 
 #+BEGIN_SRC js
   handleSortToggle() {
@@ -180,7 +180,7 @@ When the toggle button is clicked, =handleSortToggle= will be called. What this 
   }
 #+END_SRC
 
-At last, the moves list should be displayed in the right order corresponding to the =isAscending= state. For ascending, the =moves= is in the right order already. For descending, we reverse the =moves= array to let it be in the right order. Note that we also change the definition of =moves= from =const= to =let= because we may change it:
+At last, the moves list should be displayed in the right order corresponding to the `isAscending` state. For ascending, the `moves` is in the right order already. For descending, we reverse the `moves` array to let it be in the right order. Note that we also change the definition of `moves` from `const` to `let` because we may change it:
 
 #+BEGIN_SRC js
   render() {
@@ -203,7 +203,7 @@ At last, the moves list should be displayed in the right order corresponding to 
 #+END_SRC
 
 ## Highlight the squares when someone wins
-Append this stype for highlight square to the =src/index.css= file:
+Append this stype for highlight square to the `src/index.css` file:
 
 #+BEGIN_SRC css
 .square.highlight {
@@ -211,7 +211,7 @@ Append this stype for highlight square to the =src/index.css= file:
 }
 #+END_SRC
 
-We have used =calculateWinner= to declare the winner. We can get the three squares or the line that caused the win easily by modifying the return value of this function:
+We have used `calculateWinner` to declare the winner. We can get the three squares or the line that caused the win easily by modifying the return value of this function:
 
 #+BEGIN_SRC js
 function calculateWinner(squares) {
@@ -240,7 +240,7 @@ function calculateWinner(squares) {
   };
 #+END_SRC
 
-Then change the =handleClick= in =Game= since the return value of =calculateWinner= has been modified:
+Then change the `handleClick` in `Game` since the return value of `calculateWinner` has been modified:
 
 #+BEGIN_SRC js
   handleClick(i) {
@@ -252,7 +252,7 @@ Then change the =handleClick= in =Game= since the return value of =calculateWinn
   }
 #+END_SRC
 
-Then also change the =render= in =Game=. And we will pass the =winLine= through props to =Board=:
+Then also change the `render` in `Game`. And we will pass the `winLine` through props to `Board`:
 
 #+BEGIN_SRC js
   render() {
@@ -288,7 +288,7 @@ Then also change the =render= in =Game=. And we will pass the =winLine= through 
   }
 #+END_SRC
 
-Then change the =renderSquare= in =Board=. If the current index of square is included in the =winLine= array, expression ~winLine && winLine.includes(i)~ will be evaluated to =true=, otherwise =false=. This will be passed to =Square= through the =highlight= props:
+Then change the `renderSquare` in `Board`. If the current index of square is included in the `winLine` array, expression ~winLine && winLine.includes(i)~ will be evaluated to `true`, otherwise `false`. This will be passed to `Square` through the `highlight` props:
 
 #+BEGIN_SRC js
   renderSquare(i) {
@@ -304,7 +304,7 @@ Then change the =renderSquare= in =Board=. If the current index of square is inc
   }
 #+END_SRC
 
-Finally, =Square= will apply the css class depending on the =highlight= props:
+Finally, `Square` will apply the css class depending on the `highlight` props:
 
 #+BEGIN_SRC js
 function Square(props) {
@@ -320,7 +320,7 @@ function Square(props) {
 #+END_SRC
 
 ## Display draw message
-If the board is full (no next move can be taken) and there is no winner, we can say that the result is a draw. To get whether the current move results in a draw, we need to revise the =calculateWinner= function: 
+If the board is full (no next move can be taken) and there is no winner, we can say that the result is a draw. To get whether the current move results in a draw, we need to revise the `calculateWinner` function: 
 
 #+BEGIN_SRC js
 function calculateWinner(squares) {
@@ -353,7 +353,7 @@ function calculateWinner(squares) {
 }
 #+END_SRC
    
-Now that the result object of the =calculateWinner= function has a new =isDraw= attribute. Then we will change the part for displaying game status of the =render= in =Game=:
+Now that the result object of the `calculateWinner` function has a new `isDraw` attribute. Then we will change the part for displaying game status of the `render` in `Game`:
 
 #+BEGIN_SRC js
   render() {
