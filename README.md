@@ -10,10 +10,10 @@ Here are the improvements listed in order of increasing difficulty:
 
 # Uso
 
-  git clone https://github.com/fisico-alienado/react-tres-en-raya.git
-  cd react-tres-en-raya
-  npm install
-  npm start
+    git clone https://github.com/fisico-alienado/react-tres-en-raya.git
+    cd react-tres-en-raya
+    npm install
+    npm start
 
 
 # Follow-up tutorial
