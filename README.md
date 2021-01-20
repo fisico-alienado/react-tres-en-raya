@@ -64,7 +64,7 @@ With the `lastestMoveSquare`, we can easily count out the location of each move 
   }
 ```
 
-Now if you run ~npm start~ in the project folder and open [[http://localhost:3000]] in the browser, you should see the location for each move in each button of the move history list except the `Go to game start`.   
+Now if you run `npm start` in the project folder and open [[http://localhost:3000]] in the browser, you should see the location for each move in each button of the move history list except the `Go to game start`.   
 
 ## Bold the currently selected item
 Append this stype for bold item to your `src/index.css` file:
@@ -288,7 +288,7 @@ Then also change the `render` in `Game`. And we will pass the `winLine` through 
   }
 ```
 
-Then change the `renderSquare` in `Board`. If the current index of square is included in the `winLine` array, expression ~winLine && winLine.includes(i)~ will be evaluated to `true`, otherwise `false`. This will be passed to `Square` through the `highlight` props:
+Then change the `renderSquare` in `Board`. If the current index of square is included in the `winLine` array, expression `winLine && winLine.includes(i)` will be evaluated to `true`, otherwise `false`. This will be passed to `Square` through the `highlight` props:
 
 ```JS
   renderSquare(i) {
